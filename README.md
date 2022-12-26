@@ -10,7 +10,7 @@
 
 ## 功能展示
 ### 功能選單 + 顯示FSM
-![63426](https://user-images.githubusercontent.com/82558089/209506553-c01d36d1-a25c-4e82-a858-a8c1351ebb17.jpg){width="50%" height="50%"}
+![63426](https://user-images.githubusercontent.com/82558089/209506553-c01d36d1-a25c-4e82-a858-a8c1351ebb17.jpg | width=100)
 
 ### 猜拳
 ![63420](https://user-images.githubusercontent.com/82558089/209506543-4edb0d33-7e07-4932-ac0b-6cf122de67c2.jpg)
