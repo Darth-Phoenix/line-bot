@@ -27,15 +27,14 @@
 ### 隨機產生器
 
 #### 新增選項
-<img src="https://user-images.githubusercontent.com/82558089/209506548-f6084a64-d9e0-410b-84a0-11e5301d6507.jpg" width="400" height="866">
+<img src="user-images.githubusercontent.com/82558089/209522849-2952df6d-7fb6-4827-a559-cbbb5a51f0c0.jpg" width="400" height="866">
 
 #### 刪除選項
 
-##### 刪除單一選項
-<img src="https://user-images.githubusercontent.com/82558089/209506540-5d2c1e1e-5a5e-402c-a486-94a1dddfca46.jpg" width="400" height="866">
+<img src="https://user-images.githubusercontent.com/82558089/209522849-2952df6d-7fb6-4827-a559-cbbb5a51f0c0.jpg">
 
-##### 清空選項
-<img src="https://user-images.githubusercontent.com/82558089/209506538-be454951-3d93-444e-a006-e6a6480160ce.jpg" width="400" height="866">
+#### 清空選項
+<img src="https://user-images.githubusercontent.com/82558089/209522843-07453213-dcd9-435d-a6a9-687d59d8a5b4.jpg" width="400" height="866">
 
 #### 隨機選擇
 <img src="https://user-images.githubusercontent.com/82558089/209506552-6a4a4a36-582d-4624-b2e3-26838629493d.jpg" width="400" height="866">
