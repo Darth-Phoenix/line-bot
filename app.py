@@ -8,29 +8,38 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 from fsm import TocMachine
-from utils import send_text_message
+from utils import send_text_message, send_menu
 
 load_dotenv()
 
 
 machine = TocMachine(
-    states=["user", "state1", "state2"],
+    states=["menu", "rock_paper_scissors", "guess_number_menu", "play_guess_number", "random_generator", "edit_list", "add_list", "remove_list", "generate", "fsm_image"],
     transitions=[
-        {
-            "trigger": "advance",
-            "source": "user",
-            "dest": "state1",
-            "conditions": "is_going_to_state1",
-        },
-        {
-            "trigger": "advance",
-            "source": "user",
-            "dest": "state2",
-            "conditions": "is_going_to_state2",
-        },
-        {"trigger": "go_back", "source": ["state1", "state2"], "dest": "user"},
+        {"trigger": "advance", "source": "menu", "dest": "rock_paper_scissors", "conditions": "is_going_rock_paper_scissors"},
+        {"trigger": "advance", "source": "rock_paper_scissors", "dest": "rock_paper_scissors", "conditions": "is_playing_rock_paper_scissors"},
+        {"trigger": "advance", "source": "menu", "dest": "guess_number_menu", "conditions": "is_going_guess_number"},
+        {"trigger": "advance", "source": "guess_number_menu", "dest": "guess_number_menu", "conditions": "is_in_guess_number_menu"},
+        {"trigger": "advance", "source": "guess_number_menu", "dest": "play_guess_number", "conditions": "is_playing_guess_number"},
+        {"trigger": "advance", "source": "play_guess_number", "dest": "play_guess_number", "conditions": "is_guessing_number"},
+        {"trigger": "advance", "source": "play_guess_number", "dest": "guess_number_menu", "conditions": "leave_guessing_number"},
+        {"trigger": "advance", "source": "menu", "dest": "random_generator", "conditions": "is_going_random_generator"},
+        {"trigger": "advance", "source": "random_generator", "dest": "edit_list", "conditions": "enter_editing_list"},
+        {"trigger": "advance", "source": "edit_list", "dest": "edit_list", "conditions": "is_editing_list"},
+        {"trigger": "advance", "source": "edit_list", "dest": "add_list", "conditions": "enter_adding_list"},
+        {"trigger": "advance", "source": "add_list", "dest": "add_list", "conditions": "is_adding_list"},
+        {"trigger": "advance", "source": "edit_list", "dest": "remove_list", "conditions": "enter_removing_list"},
+        {"trigger": "advance", "source": "remove_list", "dest": "remove_list", "conditions": "is_removing_list"},
+        {"trigger": "advance", "source": "random_generator", "dest": "generate", "conditions": "enter_generate"},
+        {"trigger": "advance", "source": "generate", "dest": "generate", "conditions": "is_generating"},    
+        {"trigger": "advance", "source": ["add_list", "remove_list"], "dest": "edit_list", "conditions": "finish_edit"},
+        {"trigger": "advance", "source": "random_generator", "dest": "random_generator", "conditions": "is_in_random_menu"},
+        {"trigger": "advance", "source": ["generate", "edit_list"], "dest": "random_generator", "conditions": "back_to_random_menu"},
+        {"trigger": "advance", "source": "menu", "dest": "fsm_image", "conditions": "is_show_fsm"},
+        {"trigger": "go_back", "source": "fsm_image", "dest": "menu"},
+        {"trigger": "advance", "source": ["rock_paper_scissors", "guess_number_menu", "random_generator"], "dest": "menu", "conditions": "is_leaving"},
     ],
-    initial="user",
+    initial="menu",
     auto_transitions=False,
     show_conditions=True,
 )
@@ -104,7 +113,7 @@ def webhook_handler():
         print(f"REQUEST BODY: \n{body}")
         response = machine.advance(event)
         if response == False:
-            send_text_message(event.reply_token, "Not Entering any State")
+            send_menu(event.reply_token, "你好，請問需要什麼幫忙嗎?")
 
     return "OK"
 
