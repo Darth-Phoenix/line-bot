@@ -27,7 +27,7 @@
 ### 隨機產生器
 
 #### 新增選項
-<img src="https://user-images.githubusercontent.com/82558089/209522849-2952df6d-7fb6-4827-a559-cbbb5a51f0c0.jpg" width="400" height="866">
+<img src="https://user-images.githubusercontent.com/82558089/209523189-fa928b01-7e8b-45a6-98d2-840ca793ba0c.jpg" width="400" height="866">
 
 #### 刪除選項
 <img src="https://user-images.githubusercontent.com/82558089/209522849-2952df6d-7fb6-4827-a559-cbbb5a51f0c0.jpg" width="400" height="866">
