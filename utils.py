@@ -163,11 +163,11 @@ def send_edit_list(reply_token, text):
                             text='刪除選項'
                         ),
                         MessageAction(
-                            label='檢視選項',
-                            text='檢視選項'
+                            label='清空選項',
+                            text='清空選項'
                         ),
                         MessageAction(
-                            label='上一頁',
+                            label='編輯完成',
                             text='結束'
                         )
                     ]

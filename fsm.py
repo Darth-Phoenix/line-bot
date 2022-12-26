@@ -147,7 +147,7 @@ class TocMachine(GraphMachine):
         self.edit_enter = False
         if text == "新增選項" or text == "刪除選項" or text == "結束":
             return False
-        if text == "檢視選項":
+        if text == "清空選項":
             self.watch = True
         return True
 
@@ -175,18 +175,13 @@ class TocMachine(GraphMachine):
 
     def is_removing_list(self, event):
         text = event.message.text
-        if text == "清空":
-            self.remove_enter = False
-            self.remove_mode = 0
-            self.list.clear()
-            return True
-        elif text != "結束":
+        if text != "結束":
             self.remove_enter = False
             if text in self.list:
                 self.remove_mode = 1
                 self.list.remove(text)
             else:
-                self.remove_mode = 2
+                self.remove_mode = 0
             return True
         return False
     
@@ -315,9 +310,9 @@ class TocMachine(GraphMachine):
         else:
             self.option = 0
             if len(self.list) == 0:
-                message = "選項是空的"
+                message = "目前選項是空的"
             else:
-                message = ""
+                message = "目前選項: "
                 for i in self.list:
                     message += i
                     if i != self.list[len(self.list) - 1]: message += "、"
@@ -330,27 +325,36 @@ class TocMachine(GraphMachine):
             message = '你在公三小'
         else: 
             self.watch = False
-            if len(self.list) == 0:
-                message = "選項是空的"
-            else:
-                message = ""
-                for i in self.list:
-                    message += i
-                    if i != self.list[len(self.list) - 1]: message += "、"
+            self.list.clear()
+            message = "成功清空選項"
         send_edit_list(reply_token, message)
 
     def on_enter_add_list(self, event):
         reply_token = event.reply_token
         if self.add_enter == True: message = '你可以接著輸入你要新增的選項，或輸入"結束"回到上一頁'
         else: message = '新增成功'
+        if len(self.list) == 0:
+            message += "\n目前選項是空的"
+        else:
+            message += "\n目前選項: "
+            for i in self.list:
+                message += i
+                if i != self.list[len(self.list) - 1]: message += "、"
+
         send_text_message(reply_token, message)
 
     def on_enter_remove_list(self, event):
         reply_token = event.reply_token
-        if self.remove_enter == True: message = '你可以接著輸入你要刪除的選項，或輸入"清空"來清空選項，或輸入"結束"回到上一頁'
-        elif self.remove_mode == 0: message = '清空成功'
+        if self.remove_enter == True: message = '你可以接著輸入你要刪除的選項，或輸入"結束"回到上一頁'
         elif self.remove_mode == 1: message = '刪除成功'
         else: message = '選項不存在'
+        if len(self.list) == 0:
+            message += "\n目前選項是空的"
+        else:
+            message += "\n目前選項: "
+            for i in self.list:
+                message += i
+                if i != self.list[len(self.list) - 1]: message += "、"
         send_text_message(reply_token, message)
 
     def on_enter_generate(self, event):
