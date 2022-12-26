@@ -6,7 +6,7 @@
 * 隨機產生器
 
 ## Finite State Machine
-![fsm](https://user-images.githubusercontent.com/82558089/209506301-c98773c3-fd61-441c-9469-2a94e4b9f9f5.png width = "50%"/)
+![fsm](img src = "https://user-images.githubusercontent.com/82558089/209506301-c98773c3-fd61-441c-9469-2a94e4b9f9f5.png" width = "50%"/)
 
 ## 功能展示
 ### 功能選單 + 顯示FSM
