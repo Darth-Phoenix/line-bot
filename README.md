@@ -6,11 +6,11 @@
 * 隨機產生器
 
 ## Finite State Machine
-![fsm](img src = "https://user-images.githubusercontent.com/82558089/209506301-c98773c3-fd61-441c-9469-2a94e4b9f9f5.png" width = "50%"/)
+![fsm](https://user-images.githubusercontent.com/82558089/209506301-c98773c3-fd61-441c-9469-2a94e4b9f9f5.png)
 
 ## 功能展示
 ### 功能選單 + 顯示FSM
-![63426](https://user-images.githubusercontent.com/82558089/209506553-c01d36d1-a25c-4e82-a858-a8c1351ebb17.jpg)
+![63426](https://user-images.githubusercontent.com/82558089/209506553-c01d36d1-a25c-4e82-a858-a8c1351ebb17.jpg){:h="50%" w="50%"}
 
 ### 猜拳
 ![63420](https://user-images.githubusercontent.com/82558089/209506543-4edb0d33-7e07-4932-ac0b-6cf122de67c2.jpg)
